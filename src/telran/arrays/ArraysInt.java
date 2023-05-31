@@ -30,9 +30,7 @@ public class ArraysInt {
 
     public static int[] insertNumberSorted(int[] arraySorted, int number) {
         int index = Arrays.binarySearch(arraySorted, number);
-        if (index >= 0) {
-            index++;
-        } else {
+        if (index < 0) {
             index = -(index + 1);
         }
         int[] newArray = new int[arraySorted.length + 1];

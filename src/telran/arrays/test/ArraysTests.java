@@ -63,16 +63,53 @@ void insertNumberTest() {
 }
 @Test
 void removeNumberTest() {
-	//TODO
-}
-@Test
-void binarySearchTest() {
-//TODO test for understanding the standard method Arrays.benarySearch (int [] arraySorted, int key)
-	
-}
-@Test
-void insertSortedTest() {
-	//TODO
-}
+    int[] array = {1, 2, 3, 4, 5};
+    int index = 2;
+    int[] expected1 = {1, 2, 4, 5};
+    int[] newArray = ArraysInt.removeNumber(array, index);
+    assertArrayEquals(expected1, newArray);
+
+    array = new int[]{1, 2, 3, 4, 5};
+    index = 3;
+    int[] expected2 = {1, 2, 3, 5};
+    newArray = ArraysInt.removeNumber(array, index);
+    assertArrayEquals(expected2, newArray);
+
+    array = new int[]{1, 2, 3, 4, 5};
+    index = 4;
+    int[] expected3 = {1, 2, 3, 4};
+    newArray = ArraysInt.removeNumber(array, index);
+    assertArrayEquals(expected3, newArray);
 }
 
+@Test
+void binarySearchTest() {
+    int[] array = {1, 2, 3, 4, 5};
+    assertEquals(0, Arrays.binarySearch(array, 1));
+    assertEquals(1, Arrays.binarySearch(array, 2));
+    assertEquals(2, Arrays.binarySearch(array, 3));
+    assertEquals(3, Arrays.binarySearch(array, 4));
+    assertEquals(4, Arrays.binarySearch(array, 5));
+    assertEquals(-1, Arrays.binarySearch(array, 0));
+    assertEquals(-6, Arrays.binarySearch(array, 6));
+}
+
+@Test
+void insertSortedTest() {
+    int[] array = {1, 2, 4, 5};
+    int[] newArray = ArraysInt.insertNumberSorted(array, 3);
+    assertArrayEquals(new int[]{1, 2, 3, 4, 5}, newArray);
+
+    array = new int[]{1, 2, 3, 5};
+    newArray = ArraysInt.insertNumberSorted(array, 4);
+    assertArrayEquals(new int[]{1, 2, 3, 4, 5}, newArray);
+
+    array = new int[]{1, 2, 3, 4};
+    newArray = ArraysInt.insertNumberSorted(array, 5);
+    assertArrayEquals(new int[]{1, 2, 3, 4, 5}, newArray);
+
+    array = new int[]{2, 3, 4, 5};
+    newArray = ArraysInt.insertNumberSorted(array, 1);
+    assertArrayEquals(new int[]{1, 2, 3, 4, 5}, newArray);
+}
+}
